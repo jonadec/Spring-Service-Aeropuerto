@@ -1,26 +1,26 @@
 package edu.mx.lasalle.oaxaca.servicio.aeropuerto.model;
 
-import edu.mx.lasalle.oaxaca.servicio.aeropuerto.implement.service.Persona;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
-import java.util.Date;
 import java.util.List;
 
 @Entity
 @Table(name = "pasajero")
-public class PasajeroModel implements Persona {
+public class PasajeroModel {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private int id;
-    
     private String nombre;
     private String direccion;
-    private Date fechaNacimiento;
-    private Boolean discapacidad;
+    private String fechaNacimiento;
+    private boolean discapacidad;
     private String nacionalidad;
 
-    @OneToMany(mappedBy = "pasajero", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "pasajero", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonManagedReference
     private List<EquipajeModel> equipajes;
 
+    // Getters y Setters
     public int getId() {
         return id;
     }
@@ -45,19 +45,19 @@ public class PasajeroModel implements Persona {
         this.direccion = direccion;
     }
 
-    public Date getFechaNacimiento() {
+    public String getFechaNacimiento() {
         return fechaNacimiento;
     }
 
-    public void setFechaNacimiento(Date fechaNacimiento) {
+    public void setFechaNacimiento(String fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
 
-    public Boolean getDiscapacidad() {
+    public boolean isDiscapacidad() {
         return discapacidad;
     }
 
-    public void setDiscapacidad(Boolean discapacidad) {
+    public void setDiscapacidad(boolean discapacidad) {
         this.discapacidad = discapacidad;
     }
 
@@ -83,28 +83,9 @@ public class PasajeroModel implements Persona {
                 "id=" + id +
                 ", nombre='" + nombre + '\'' +
                 ", direccion='" + direccion + '\'' +
-                ", fechaNacimiento=" + fechaNacimiento +
+                ", fechaNacimiento='" + fechaNacimiento + '\'' +
                 ", discapacidad=" + discapacidad +
                 ", nacionalidad='" + nacionalidad + '\'' +
                 '}';
     }
-
-    @Override
-    public void viajar() {}
-    @Override
-    public void abordar() {}
-    @Override
-    public void checkin() {}
-
-    @Override
-    public void comer() {}
-        
-
-    @Override
-    public void dormir() {}
-       
-
-    @Override
-    public void irBanio() {}
-       
 }

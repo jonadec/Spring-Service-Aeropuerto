@@ -9,15 +9,12 @@ public class VueloModel {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private int id;
-
     @ManyToOne
     @JoinColumn(name = "terminal_id", nullable = false)
     private TerminalModel terminal;
-
     @ManyToOne
     @JoinColumn(name = "vehiculo_aereo_id", nullable = false)
     private VehiculoAereoModel vehiculoAereo;
-
     private String origen;
     private String destino;
 

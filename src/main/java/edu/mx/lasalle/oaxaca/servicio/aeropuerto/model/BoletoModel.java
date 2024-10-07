@@ -13,13 +13,10 @@ public class BoletoModel {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private int id;
-
     @ManyToOne
     private PasajeroModel pasajero;
-
     @ManyToOne
     private VueloModel vuelo;
-
     private String asiento;
     private double costo;
 

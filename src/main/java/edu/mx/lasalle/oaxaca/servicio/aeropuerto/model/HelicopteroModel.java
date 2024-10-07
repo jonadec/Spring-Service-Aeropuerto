@@ -6,7 +6,6 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "helicoptero")
 public class HelicopteroModel extends VehiculoAereoModel {
-    
     private int helices;
     private String tipo;
 

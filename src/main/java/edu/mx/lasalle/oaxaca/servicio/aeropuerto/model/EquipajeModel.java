@@ -1,5 +1,6 @@
 package edu.mx.lasalle.oaxaca.servicio.aeropuerto.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 @Entity
@@ -8,7 +9,6 @@ public class EquipajeModel {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private int id;
-    
     private float peso;
     private float altura;
     private float ancho;
@@ -16,8 +16,10 @@ public class EquipajeModel {
 
     @ManyToOne
     @JoinColumn(name = "pasajero_id", nullable = false)
+    @JsonBackReference
     private PasajeroModel pasajero;
 
+    // Getters y Setters
     public int getId() {
         return id;
     }

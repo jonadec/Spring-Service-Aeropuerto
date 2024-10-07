@@ -48,7 +48,7 @@ public class PasajeroController {
         }
         return new ResponseEntity<>(pasajeros, HttpStatus.OK);
     }
-    @GetMapping("/(id)")
+    @GetMapping("/{id}")
     
     public ResponseEntity<Object> getPasajero (@PathVariable int id){
         try{
@@ -70,7 +70,7 @@ public class PasajeroController {
         }
     }
     
-    @PutMapping("/(id)/actualizar")
+    @PutMapping("/{id}/actualizar")
     public ResponseEntity<Object>updatePasajero(
     
             @RequestBody PasajeroModel pasajeroModel,
@@ -102,7 +102,7 @@ public class PasajeroController {
     }
     
     
-    @DeleteMapping("/(id)/borrar")
+    @DeleteMapping("/{id}/borrar")
     public ResponseEntity<Object> deletePasajero(@PathVariable int id){
         ResponseEntity<Object> responseEntity=null;
         CustomResponse customResponse=new CustomResponse();

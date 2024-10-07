@@ -5,9 +5,7 @@
 package edu.mx.lasalle.oaxaca.servicio.aeropuerto.controller;
 
 import edu.mx.lasalle.oaxaca.servicio.aeropuerto.model.EquipajeModel;
-import edu.mx.lasalle.oaxaca.servicio.aeropuerto.model.PasajeroModel;
 import edu.mx.lasalle.oaxaca.servicio.aeropuerto.service.EquipajeService;
-import edu.mx.lasalle.oaxaca.servicio.aeropuerto.service.PasajeroService;
 import edu.mx.lasalle.oaxaca.servicio.aeropuerto.utils.CustomResponse;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,7 +47,7 @@ public class EquipajeController {
         }
         return new ResponseEntity<>(equipaje, HttpStatus.OK);
     }
-    @GetMapping("/(id)")
+    @GetMapping("/{id}")
     
     public ResponseEntity<Object> getEquipaje (@PathVariable int id){
         try{
@@ -71,7 +69,7 @@ public class EquipajeController {
         }
     }
     
-    @PutMapping("/(id)/actualizar")
+    @PutMapping("/{id}/actualizar")
     public ResponseEntity<Object>updateEquipaje(
     
             @RequestBody EquipajeModel equipajemodel,
@@ -103,7 +101,7 @@ public class EquipajeController {
     }
     
     
-    @DeleteMapping("/(id)/borrar")
+    @DeleteMapping("/{id}/borrar")
     public ResponseEntity<Object> deleteEquipaje(@PathVariable int id){
         ResponseEntity<Object> responseEntity=null;
         CustomResponse customResponse=new CustomResponse();
