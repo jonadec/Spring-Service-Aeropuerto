@@ -1,5 +1,6 @@
 package edu.mx.lasalle.oaxaca.servicio.aeropuerto.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 @Entity
@@ -13,6 +14,7 @@ public class TerminalModel {
 
     @ManyToOne
     @JoinColumn(name = "aeropuerto_id", nullable = false)
+    @JsonBackReference
     private AeropuertoModel aeropuerto;
 
     // Getters y Setters

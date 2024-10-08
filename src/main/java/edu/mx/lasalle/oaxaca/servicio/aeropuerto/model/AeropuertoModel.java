@@ -6,17 +6,22 @@ package edu.mx.lasalle.oaxaca.servicio.aeropuerto.model;
 import jakarta.persistence.*;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 @Table(name = "aeropuerto")
 public class AeropuertoModel {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "aeropuerto_seq")
+    @SequenceGenerator(name = "aeropuerto_seq", sequenceName = "aeropuerto_seq", allocationSize = 1)
     private int claveAeropuerto;
+
     private String nombre;
     private int numeroPistas;
     private String tipoAvion;
 
-    @OneToMany(mappedBy = "aeropuerto", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "aeropuerto", cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @JsonManagedReference
     private List<TerminalModel> terminales;
 
     // Getters y Setters

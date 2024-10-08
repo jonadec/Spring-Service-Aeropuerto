@@ -1,5 +1,6 @@
 package edu.mx.lasalle.oaxaca.servicio.aeropuerto.controller;
 
+import edu.mx.lasalle.oaxaca.servicio.aeropuerto.model.PasajeroDTO;
 import edu.mx.lasalle.oaxaca.servicio.aeropuerto.model.VueloModel;
 import edu.mx.lasalle.oaxaca.servicio.aeropuerto.service.VueloService;
 import edu.mx.lasalle.oaxaca.servicio.aeropuerto.utils.CustomResponse;
@@ -53,6 +54,16 @@ public class VueloController {
             return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).body(new CustomResponse(HttpStatus.UNPROCESSABLE_ENTITY, null, "ERROR: " + e.getMessage(), 422));
         }
     }
+    
+    @GetMapping("/{id}/pasajeros")
+    public ResponseEntity<List<PasajeroDTO>> getNombresPasajeros(@PathVariable int id) {
+        List<PasajeroDTO> pasajeros = vueloService.obtenerNombresPasajerosPorVuelo(id);
+        if (pasajeros.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(pasajeros, HttpStatus.OK);
+    }
+
 
     @PutMapping("/{id}/actualizar")
     public ResponseEntity<Object> updateVuelo(@RequestBody VueloModel vueloModel, @PathVariable int id) {

@@ -1,5 +1,7 @@
 package edu.mx.lasalle.oaxaca.servicio.aeropuerto.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -15,6 +17,7 @@ public class BoletoModel {
     private int id;
     @ManyToOne
     private PasajeroModel pasajero;
+    @JsonBackReference
     @ManyToOne
     private VueloModel vuelo;
     private String asiento;
@@ -35,7 +38,7 @@ public class BoletoModel {
     public void setPasajero(PasajeroModel pasajero) {
         this.pasajero = pasajero;
     }
-
+    
     public VueloModel getVuelo() {
         return vuelo;
     }

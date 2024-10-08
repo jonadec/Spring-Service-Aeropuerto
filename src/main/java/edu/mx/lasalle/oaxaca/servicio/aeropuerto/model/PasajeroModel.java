@@ -11,6 +11,7 @@ public class PasajeroModel {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private int id;
     private String nombre;
+    private String apellido;
     private String direccion;
     private String fechaNacimiento;
     private boolean discapacidad;
@@ -40,6 +41,15 @@ public class PasajeroModel {
     public String getDireccion() {
         return direccion;
     }
+
+    public String getApellido() {
+        return apellido;
+    }
+
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
+    
 
     public void setDireccion(String direccion) {
         this.direccion = direccion;
@@ -82,6 +92,7 @@ public class PasajeroModel {
         return "PasajeroModel{" +
                 "id=" + id +
                 ", nombre='" + nombre + '\'' +
+                ", apellido='" + apellido + '\'' +
                 ", direccion='" + direccion + '\'' +
                 ", fechaNacimiento='" + fechaNacimiento + '\'' +
                 ", discapacidad=" + discapacidad +

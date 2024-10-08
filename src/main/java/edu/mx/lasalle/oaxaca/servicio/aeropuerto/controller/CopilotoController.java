@@ -26,7 +26,7 @@ public class CopilotoController {
     @Autowired
     private CopilotoService copilotoService;
 
-    @PostMapping("/registrar")
+    @PostMapping("/registro")
     public CustomResponse registrarCopiloto(@RequestBody CopilotoModel copilotoModel) {
         CustomResponse customResponse = new CustomResponse();
         copilotoService.registrarCopiloto(copilotoModel);

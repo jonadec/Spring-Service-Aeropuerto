@@ -1,7 +1,9 @@
 package edu.mx.lasalle.oaxaca.servicio.aeropuerto.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "vuelo")
@@ -9,9 +11,11 @@ public class VueloModel {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private int id;
+    
     @ManyToOne
     @JoinColumn(name = "terminal_id", nullable = false)
     private TerminalModel terminal;
+    
     @ManyToOne
     @JoinColumn(name = "vehiculo_aereo_id", nullable = false)
     private VehiculoAereoModel vehiculoAereo;
@@ -24,8 +28,20 @@ public class VueloModel {
     private int duracion; // en minutos
     private String horaSalida; // en formato HH:mm
     private String horaLlegada; // en formato HH:mm
+    
+    @JsonManagedReference
+    @OneToMany(mappedBy = "vuelo")
+    private List<BoletoModel> boletos;
 
     // Getters y Setters
+    
+    public List<BoletoModel> getBoletos() {
+        return boletos;
+    }
+
+    public void setBoletos(List<BoletoModel> boletos) {
+        this.boletos = boletos;
+    }
     public int getId() {
         return id;
     }

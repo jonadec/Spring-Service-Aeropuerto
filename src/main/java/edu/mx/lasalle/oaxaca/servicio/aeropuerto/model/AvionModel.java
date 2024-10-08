@@ -16,6 +16,8 @@ public class AvionModel extends VehiculoAereoModel {
         super(); // Llamada al constructor de la clase padre
     }
 
+    
+    
     // Getters and Setters
     public String getAerolinea() {
         return aerolinea;
